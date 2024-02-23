@@ -35,7 +35,7 @@ jobs:
       - name: Docker build
         run: docker build -t passwdgen .
       - name: Docker run
-        run: docker run -d -p 5000:5000 --name passwdGen passwdGen
+        run: docker run -d -p 5000:5000 --name passwdgen passwdgen
       - name: Deploy
         run: |
           echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
