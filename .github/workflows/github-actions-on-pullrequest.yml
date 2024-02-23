@@ -2,20 +2,44 @@ name: Python application PR
 
 on:
     pull_request:
-        branches:
+      types:
+        - closed
+        - opened
+      branches:
         - main
 
 jobs:
-    test:
+    tests:
         runs-on: ubuntu-latest
 
         steps:
-        - uses: actions/checkout@v2
+        - uses: actions/checkout@v4
         - name: Set up Python
-          uses: actions/setup-python@v2
+          uses: actions/setup-python@v5
           with:
             python-version: '3.11'
         - name: Install dependencies
           run: pip install -r requirements.txt
         - name: Run tests
           run: pytest
+    deploy:
+      if: github.event.pull_request.merged == true
+      runs-on: ubuntu-latest
+
+      steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Docker build
+        run: docker build -t passwdGen .
+      - name: Docker run
+        run: docker run -d -p 5000:5000 --name passwdGen passwdGen
+      - name: Deploy
+        run: |
+          echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+          docker tag myapp $DOCKERHUB_USERNAME/passwdGen:latest
+          docker push $DOCKERHUB_USERNAME/passwdGen:latest
