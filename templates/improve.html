@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/static/style.css">
+    <meta charset="UTF-8">
+    <title>Generate a Password</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Improve a Password</h1>
+        <form action="/improve" method="post">
+            <div>
+                <label for="length">Password to improve:</label>
+                <input type="text" id="password" name="password" required>
+            </div>
+            <div>
+                <input type="submit" value="Improve">
+            </div>
+        </form>
+        {% if password %}
+            <p>Password improved: <strong>{{ password }}</strong></p>
+        {% elif password is not none %}
+            <p>{{ password }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
