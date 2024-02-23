@@ -3,7 +3,6 @@
       types: [created]
   jobs:
     deploy:
-      if: github.event_name == 'release' && contains(github.event.release.tag_name, 'v')
       runs-on: ubuntu-latest
       steps:
       - name: Set up QEMU
@@ -20,4 +19,4 @@
         with:
           push: true
           platforms: linux/amd64,linux/arm64, linux/arm/v8
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/passwdgen:$ {{ github.event.release.tag_name }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/passwdgen:${{ github.event.release.tag_name }}
