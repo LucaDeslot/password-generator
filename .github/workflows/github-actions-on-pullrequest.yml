@@ -37,4 +37,5 @@ jobs:
           uses: docker/build-push-action@v5
           with:
             push: true
-            tags: ${{ secrets.DOCKERHUB_USERNAME }}/passwdgen-${{ steps.branch_name.outputs.branch }}-${{ github.sha }}:latest
+            tags: ${{ secrets.DOCKERHUB_USERNAME }}/passwdgen:latest
+            #tags: ${{ secrets.DOCKERHUB_USERNAME }}/passwdgen-${{ steps.branch_name.outputs.branch }}-${{ github.sha }}:latest
