@@ -3,19 +3,20 @@ import requests
 
 app = Flask(__name__)
 
-@app.route('/')
+
+@app.route("/")
 def home():
-    return render_template('index.html')
+    return render_template("index.html")
 
 
-@app.route('/generate', methods=['GET', 'POST'])
+@app.route("/generate", methods=["GET", "POST"])
 def generate_password():
-    if request.method == 'POST':
+    if request.method == "POST":
         # Récupère la longueur du mot de passe depuis le formulaire
-        length = request.form.get('length', '20')
+        length = request.form.get("length", "20")
 
         # Construit l'URL avec le paramètre de longueur
-        api_url = f'https://password.ninja/api/password?minPassLength={length}'
+        api_url = f"https://password.ninja/api/password?minPassLength={length}"
 
         # Appel à l'API pour obtenir un mot de passe
         response = requests.get(api_url)
@@ -25,28 +26,31 @@ def generate_password():
             password = "Erreur lors de la génération du mot de passe."
 
         # Renvoie la même page avec le mot de passe généré affiché
-        return render_template('generate.html', password=password)
+        return render_template("generate.html", password=password)
 
     # Pour une requête GET, affiche simplement le formulaire sans mot de passe
-    return render_template('generate.html', password=None)
+    return render_template("generate.html", password=None)
 
-@app.route('/verify', methods=['GET', 'POST'])
+
+@app.route("/verify", methods=["GET", "POST"])
 def verify_password_strength():
-    if request.method == 'POST':
+    if request.method == "POST":
         # Ici, intégrez la logique pour vérifier la force du mot de passe soumis par l'utilisateur
         pass  # Remplacez cette ligne par votre code
     # Affiche le formulaire pour vérifier la force d'un mot de passe
-    return render_template('verify.html')
+    return render_template("verify.html")
 
-@app.route('/strengthen', methods=['GET', 'POST'])
+
+@app.route("/strengthen", methods=["GET", "POST"])
 def strengthen_password():
-    if request.method == 'POST':
+    if request.method == "POST":
         # Ici, intégrez la logique pour renforcer un mot de passe soumis par l'utilisateur
         pass  # Remplacez cette ligne par votre code
     # Affiche le formulaire pour renforcer un mot de passe
-    return render_template('strengthen.html')
+    return render_template("strengthen.html")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     app.run(debug=True)
 
 #
@@ -69,5 +73,5 @@ if __name__ == '__main__':
 #     return render_template('index.html', password=password)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
