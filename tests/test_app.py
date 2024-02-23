@@ -12,7 +12,7 @@ class MyTest(TestCase):
     def test_root_route(self):
         response = self.client.get('/')
         self.assert200(response)  # Vérifie que la réponse a un statut 200 OK
-        self.assertEqual(response.data.decode('utf-8'), 'Hello World')  # Vérifie le contenu de la réponse
+        self.assertEqual(response.data.decode('utf-8'), 'Hello World!')  # Vérifie le contenu de la réponse
 
 
 if __name__ == '__main__':
