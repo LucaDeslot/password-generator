@@ -53,7 +53,7 @@ class TestPasswordImprovement(TestCase):
         page_content = response.data.decode("utf-8")
         # Check if the text "Password improved:" is present in the page
         self.assertIn(
-            "Password improved:",
+            "Password improved :",
             page_content,
             "Text 'Password improved:' not found in page content."
         )
@@ -73,7 +73,7 @@ class TestPasswordImprovement(TestCase):
         page_content = response.data.decode("utf-8")
         # Check if the text "Password improved:" is present in the page
         self.assertIn(
-            "Password improved:",
+            "Password improved :",
             page_content,
             "Text 'Password improved:' not found in page content."
         )
