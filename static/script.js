@@ -3,7 +3,7 @@ document.getElementById('passwordInput').addEventListener('input', function() {
     checkPasswordStrength(password);
 });
 
-let isWeakPassword = false;
+let isStrongPassword = false;
 
 function checkPasswordStrength(password) {
     fetch('/verify_password_strength', {
@@ -16,7 +16,7 @@ function checkPasswordStrength(password) {
     .then(response => response.json())
     .then(data => {
         let resultText = `Strength: ${data.result}`;
-        isWeakPassword = data.result.toLowerCase() === 'weak';
+        isStrongPassword = data.result.toLowerCase() === 'strong';
 
         // Affiche les critères manquants
         if (data.missing && data.missing.length > 0) {
@@ -30,7 +30,7 @@ function checkPasswordStrength(password) {
 
 const copyButton = document.getElementById('copyButton');
 copyButton.addEventListener('mouseenter', function() {
-    if (!isWeakPassword) return;
+    if (isStrongPassword) return;
 
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;

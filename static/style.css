@@ -34,28 +34,3 @@ input[type=number] {
     border-radius: 5px;
     box-sizing: border-box;
 }
-
-
-/*button#copyButton {*/
-/*    width: calc(100% / 3); !* Fait le bouton 1/3 de la largeur du container *!*/
-/*}*/
-
-/*!* Animation pour bouger à gauche *!*/
-/*.move-left {*/
-/*    animation: moveLeft 0.5s ease-in-out;*/
-/*    animation-fill-mode: forwards; !* Garde le bouton dans sa nouvelle position *!*/
-/*}*/
-
-/*@keyframes moveLeft {*/
-/*    to { transform: translateX(-50%); }*/
-/*}*/
-
-/*!* Animation pour bouger à droite *!*/
-/*.move-right {*/
-/*    animation: moveRight 0.5s ease-in-out;*/
-/*    animation-fill-mode: forwards; !* Garde le bouton dans sa nouvelle position *!*/
-/*}*/
-
-/*@keyframes moveRight {*/
-/*    to { transform: translateX(50%); }*/
-/*}*/
